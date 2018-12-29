@@ -1,8 +1,8 @@
 package cn.unowen.Service;
 
-import vo.PageBean;
-import vo.ResultBean;
-import vo.SearchBookDate;
+import cn.unowen.vo.PageBean;
+import cn.unowen.vo.ResultBean;
+import cn.unowen.vo.SearchBookDate;
 
 public interface SearchRegisteredBooksService {
 	ResultBean selectByBookNumber(String bookNumber);

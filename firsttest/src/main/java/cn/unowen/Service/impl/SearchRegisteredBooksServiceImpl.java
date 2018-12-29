@@ -10,10 +10,10 @@ import cn.unowen.mapper.BookLogMapper;
 import cn.unowen.mapper.BookMapper;
 import cn.unowen.pojo.Book;
 import cn.unowen.pojo.BookLog;
-import vo.PageBean;
-import vo.ResultBean;
-import vo.ResultBeanUtils;
-import vo.SearchBookDate;
+import cn.unowen.vo.PageBean;
+import cn.unowen.vo.ResultBean;
+import cn.unowen.vo.ResultBeanUtils;
+import cn.unowen.vo.SearchBookDate;
 
 @Service
 public class SearchRegisteredBooksServiceImpl implements SearchRegisteredBooksService {
@@ -29,44 +29,19 @@ public class SearchRegisteredBooksServiceImpl implements SearchRegisteredBooksSe
 
 	@Override
 	public PageBean selectByDate(SearchBookDate searchBookDate) {
-		int pageNum = SystemCon.pageNum;
-		if (searchBookDate.getPageNum() > 0) {
-			pageNum = searchBookDate.getPageNum();
-		}
-
-		int pageSize = SystemCon.pageSize;
-		if (searchBookDate.getPageSize() > 0) {
-			pageSize = searchBookDate.getPageSize();
-		}
-
-		int offset = (pageNum - 1) * pageSize;
-
 		List<Book> booklist = bkmapper.selectByDate(searchBookDate.getStartDate().toLocaleString(),
-				searchBookDate.getEndDate().toLocaleString(), offset, pageSize);
+				searchBookDate.getEndDate().toLocaleString(), searchBookDate.getOffset(), searchBookDate.getPageSize());
 		int count = bkmapper.selectCount();
 		List<Object> objects = (List) booklist;
-		return ResultBeanUtils.setPageOK(pageNum, pageSize, count, objects);
-
+		return ResultBeanUtils.setPageOK(searchBookDate.getPageNum(), searchBookDate.getPageSize(), count, objects);
 	}
 
 	@Override
 	public PageBean selectLogByDate(SearchBookDate searchBookDate) {
-		int pageNum = SystemCon.pageNum;
-		if (searchBookDate.getPageNum() > 0) {
-			pageNum = searchBookDate.getPageNum();
-		}
-
-		int pageSize = SystemCon.pageSize;
-		if (searchBookDate.getPageSize() > 0) {
-			pageSize = searchBookDate.getPageSize();
-		}
-
-		int offset = (pageNum - 1) * pageSize;
-
 		List<BookLog> booklist = blMapper.selectByDate(searchBookDate.getStartDate().toLocaleString(),
-				searchBookDate.getEndDate().toLocaleString(), offset, pageSize);
+				searchBookDate.getEndDate().toLocaleString(), searchBookDate.getOffset(), searchBookDate.getPageSize());
 		int count = blMapper.selectCount();
 		List<Object> objects = (List) booklist;
-		return ResultBeanUtils.setPageOK(pageNum, pageSize, count, objects);
+		return ResultBeanUtils.setPageOK(searchBookDate.getPageNum(), searchBookDate.getPageSize(), count, objects);
 	}
 }

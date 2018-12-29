@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.unowen.Service.RegService;
 import cn.unowen.pojo.Book;
-import vo.ResultBean;
+import cn.unowen.vo.ResultBean;
 
 @RestController
 @RequestMapping("/api/v1/book")

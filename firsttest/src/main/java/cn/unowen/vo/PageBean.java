@@ -1,4 +1,4 @@
-package vo;
+package cn.unowen.vo;
 
 import java.util.List;
 import org.springframework.context.annotation.Scope;

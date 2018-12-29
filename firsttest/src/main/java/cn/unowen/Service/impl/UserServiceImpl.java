@@ -15,11 +15,11 @@ import cn.unowen.mapper.UserMapper;
 import cn.unowen.pojo.Book;
 import cn.unowen.pojo.User;
 import cn.unowen.pojo.UserLog;
-import vo.PageBean;
-import vo.PasswordForm;
-import vo.ResultBean;
-import vo.ResultBeanUtils;
-import vo.SearchBookDate;
+import cn.unowen.vo.PageBean;
+import cn.unowen.vo.PasswordForm;
+import cn.unowen.vo.ResultBean;
+import cn.unowen.vo.ResultBeanUtils;
+import cn.unowen.vo.SearchBookDate;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -60,24 +60,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public PageBean getLogByDate(SearchBookDate searchBookDate) {
-
-		int pageNum = SystemCon.pageNum;
-		if (searchBookDate.getPageNum() > 0) {
-			pageNum = searchBookDate.getPageNum();
-		}
-
-		int pageSize = SystemCon.pageSize;
-		if (searchBookDate.getPageSize() > 0) {
-			pageSize = searchBookDate.getPageSize();
-		}
-
-		int offset = (pageNum - 1) * pageSize;
-
 		List<UserLog> userLogs = ulMapper.selectByDate(searchBookDate.getStartDate().toLocaleString(),
-				searchBookDate.getEndDate().toLocaleString(), offset, pageSize);
+				searchBookDate.getEndDate().toLocaleString(), searchBookDate.getOffset(), searchBookDate.getPageSize());
 		int count = ulMapper.selectCount();
 		List<Object> objects = (List) userLogs;
-		return ResultBeanUtils.setPageOK(pageNum, pageSize, count, objects);
+		return ResultBeanUtils.setPageOK(searchBookDate.getPageNum(), searchBookDate.getPageSize(), count, objects);
 
 	}
 

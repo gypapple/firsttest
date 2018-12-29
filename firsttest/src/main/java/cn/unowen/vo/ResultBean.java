@@ -1,4 +1,4 @@
-package vo;
+package cn.unowen.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

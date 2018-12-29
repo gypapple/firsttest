@@ -5,10 +5,10 @@ import javax.servlet.http.HttpSession;
 
 import cn.hutool.db.Page;
 import cn.unowen.pojo.User;
-import vo.PageBean;
-import vo.PasswordForm;
-import vo.ResultBean;
-import vo.SearchBookDate;
+import cn.unowen.vo.PageBean;
+import cn.unowen.vo.PasswordForm;
+import cn.unowen.vo.ResultBean;
+import cn.unowen.vo.SearchBookDate;
 
 public interface UserService {
 	public ResultBean login(User user, HttpSession session, HttpServletResponse response);

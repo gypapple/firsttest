@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import cn.unowen.mapper.BookLogMapper;
 import cn.unowen.pojo.Book;
 import cn.unowen.pojo.BookLog;
-import vo.ResultBean;
+import cn.unowen.vo.ResultBean;
 
 @Aspect
 @Component

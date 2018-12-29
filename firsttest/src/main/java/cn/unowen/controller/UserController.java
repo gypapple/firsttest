@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cn.unowen.Service.UserService;
 import cn.unowen.pojo.User;
-import vo.PageBean;
-import vo.PasswordForm;
-import vo.ResultBean;
-import vo.SearchBookDate;
+import cn.unowen.vo.PageBean;
+import cn.unowen.vo.PasswordForm;
+import cn.unowen.vo.ResultBean;
+import cn.unowen.vo.SearchBookDate;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -38,7 +38,7 @@ public class UserController {
 	// 查询条件：操作开始时间、操作结束时间；
 	// 查询结果：数据结构定义的数据，全部展示；
 	@PostMapping("/searchUserLog/byDate")
-	public PageBean userLogByDate(@Valid SearchBookDate searchBookDate) {
+	public PageBean userLogByDateWithPage(@Valid SearchBookDate searchBookDate) {
 
 		return uservice.getLogByDate(searchBookDate);
 	}

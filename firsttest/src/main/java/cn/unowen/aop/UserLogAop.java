@@ -14,7 +14,7 @@ import cn.unowen.mapper.UserLogMapper;
 import cn.unowen.pojo.Book;
 import cn.unowen.pojo.User;
 import cn.unowen.pojo.UserLog;
-import vo.ResultBean;
+import cn.unowen.vo.ResultBean;
 
 @Aspect
 @Component
