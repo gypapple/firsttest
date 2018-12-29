@@ -114,8 +114,8 @@
 		where id =
 		#{id,jdbcType=INTEGER}
 	</update>
-	<select id="selectByNameAndPwd" parameterType="cn.unowen.pojo.User"
-		resultMap="BaseResultMap">
+	<select id="selectByNameAndPwd"
+		parameterType="cn.unowen.pojo.User" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
 		from t_user
@@ -150,5 +150,8 @@
 	<update id="lockNow" parameterType="java.lang.String">
 		update t_user set lockFlag=-1
 		,lockTime = NOW() where name =#{name};
+	</update>
+	<update id="updatePasswordByName">
+		update t_user set password = #{password} where name = #{name}
 	</update>
 </mapper>

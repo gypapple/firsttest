@@ -13,6 +13,8 @@ public class SystemCon {
 	public static final int RERROR4 = 100004;
 	// 生成验证码
 	public static final int ERROR5 = 100005;
+	// 修改密码失败
+	public static final int ERROR6 = 100006;
 	// 请求方式
 	public static final String GET = "GET";
 	public static final String POST = "POST";
@@ -28,11 +30,11 @@ public class SystemCon {
 
 	// 错误次数==》锁定
 	public static final int errorTimes = 5;
-	
-	//页面条数
+
+	// 页面条数
 	public static final int pageSize = 5;
-	
-	//页面数
+
+	// 页面数
 	public static final int pageNum = 1;
 
 }

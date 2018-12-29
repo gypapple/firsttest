@@ -19,4 +19,6 @@ public class BookRegController {
 		return regService.registBook(book);
 
 	}
+	
+
 }

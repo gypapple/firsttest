@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import cn.unowen.Service.SearchRegisteredBooksService;
 import cn.unowen.constant.SystemCon;
+import cn.unowen.mapper.BookLogMapper;
 import cn.unowen.mapper.BookMapper;
 import cn.unowen.pojo.Book;
+import cn.unowen.pojo.BookLog;
 import vo.PageBean;
 import vo.ResultBean;
 import vo.ResultBeanUtils;
@@ -17,6 +19,8 @@ import vo.SearchBookDate;
 public class SearchRegisteredBooksServiceImpl implements SearchRegisteredBooksService {
 	@Autowired
 	BookMapper bkmapper;
+	@Autowired
+	BookLogMapper blMapper;
 
 	@Override
 	public ResultBean selectByBookNumber(String bookNumber) {
@@ -43,5 +47,26 @@ public class SearchRegisteredBooksServiceImpl implements SearchRegisteredBooksSe
 		List<Object> objects = (List) booklist;
 		return ResultBeanUtils.setPageOK(pageNum, pageSize, count, objects);
 
+	}
+
+	@Override
+	public PageBean selectLogByDate(SearchBookDate searchBookDate) {
+		int pageNum = SystemCon.pageNum;
+		if (searchBookDate.getPageNum() > 0) {
+			pageNum = searchBookDate.getPageNum();
+		}
+
+		int pageSize = SystemCon.pageSize;
+		if (searchBookDate.getPageSize() > 0) {
+			pageSize = searchBookDate.getPageSize();
+		}
+
+		int offset = (pageNum - 1) * pageSize;
+
+		List<BookLog> booklist = blMapper.selectByDate(searchBookDate.getStartDate().toLocaleString(),
+				searchBookDate.getEndDate().toLocaleString(), offset, pageSize);
+		int count = blMapper.selectCount();
+		List<Object> objects = (List) booklist;
+		return ResultBeanUtils.setPageOK(pageNum, pageSize, count, objects);
 	}
 }

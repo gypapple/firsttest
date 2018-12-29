@@ -20,12 +20,14 @@ public interface UserMapper {
 	User selectByNameAndPwd(User record);
 
 	int lockedTime(String name);
-	
+
 	User selectByName(String name);
-	
+
 	boolean lockOrNo(String name, int lock);
-	
-	int errorCount(@Param("name")String name,@Param("flag")int flag);
-	
+
+	int errorCount(@Param("name") String name, @Param("flag") int flag);
+
 	int lockNow(String name);
+
+	int updatePasswordByName(String name, String password);
 }

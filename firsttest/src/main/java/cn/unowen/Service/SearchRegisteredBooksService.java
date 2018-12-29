@@ -8,4 +8,6 @@ public interface SearchRegisteredBooksService {
 	ResultBean selectByBookNumber(String bookNumber);
 
 	PageBean selectByDate(SearchBookDate searchBookDate);
+
+	PageBean selectLogByDate(SearchBookDate searchBookDate);
 }

@@ -36,6 +36,8 @@ public class RegServiceImpl implements RegService {
 			System.out.println("生成的注册码为：" + code);
 
 			// 将注册码放进mysql
+			System.out.println(book.getBooknumber());
+			System.out.println(book.getIdcode());
 			return bookmapper.insertSelective(book) > 0 ? ResultBeanUtils.setOK("注册成功", code)
 					: ResultBeanUtils.setError(SystemCon.RERROR2, "注册失败", null);
 		} else {
