@@ -22,7 +22,7 @@ public class SearchRegisteredBooksController {
 	// 2.2-1查询注册图书明细：图书编号
 	// 查询条件：图书编号、注册开始时间、注册结束时间；
 	// 查询结果：数据结构定义的数据，全部展示；
-	@GetMapping("/searchRegBook/byNum")
+	@PostMapping("/searchRegBook/byNum")
 	public ResultBean regedBookByNum(String bookNumber) {
 		return searchRegisteredBooksService.selectByBookNumber(bookNumber);
 	}

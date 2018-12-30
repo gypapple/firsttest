@@ -2,6 +2,9 @@ package cn.unowen.pojo;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Book {
 	private Integer id;
-
+	
+	@NotNull
+	@Length(min = 16, max = 16)
 	private String idcode;
 
+	@NotNull
+	@Length(min = 22, max = 22)
 	private String booknumber;
 
 	private Date regtime;

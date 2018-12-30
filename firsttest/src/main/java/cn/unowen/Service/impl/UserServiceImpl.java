@@ -35,10 +35,10 @@ public class UserServiceImpl implements UserService {
 			// 账号密码不正确
 			uMapper.errorCount(user.getName(), 1);
 			int times = uMapper.selectByName(user.getName()).getTimes();
-			if (times == SystemCon.errorTimes - 1) {
+			if (times == SystemCon.errorTimes ) {
 				uMapper.lockNow(user.getName());
 			}
-			if (times >= SystemCon.errorCount - 1) {
+			if (times >= SystemCon.errorCount) {
 				return ResultBeanUtils.setError(SystemCon.ERROR5, "账号或者密码不正确", null);
 			}
 			return ResultBeanUtils.setError(SystemCon.RERROR3, "账号或者密码不正确", null);
