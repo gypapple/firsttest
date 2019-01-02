@@ -1,29 +1,18 @@
 package cn.unowen.Service.impl;
-
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy;
-import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.crypto.SecureUtil;
-import cn.hutool.crypto.symmetric.AES;
 import cn.unowen.Service.UserService;
 import cn.unowen.constant.SystemCon;
 import cn.unowen.mapper.UserLogMapper;
 import cn.unowen.mapper.UserMapper;
-import cn.unowen.pojo.Book;
 import cn.unowen.pojo.User;
 import cn.unowen.pojo.UserLog;
-import cn.unowen.utils.EncrypUtil;
 import cn.unowen.vo.PageBean;
 import cn.unowen.vo.PasswordForm;
 import cn.unowen.vo.ResultBean;

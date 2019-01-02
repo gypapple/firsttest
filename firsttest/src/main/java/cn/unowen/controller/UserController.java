@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +24,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1/user")
 @Api(tags = "用户类信息查询")
 @CrossOrigin(allowCredentials = "true")
@@ -72,5 +74,10 @@ public class UserController {
 	public ResultBean updatePWD(@Valid PasswordForm pwdForm, HttpSession session) {
 		return uservice.updatePwd(session, pwdForm);
 
+	}
+
+	@GetMapping("/hello")
+	public String jsptest() {
+		return "index";
 	}
 }
