@@ -3,6 +3,7 @@ package cn.unowen.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,8 @@ import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api("图书类信息查询")
+@Api(tags = "图书类信息查询")
+@CrossOrigin(allowCredentials = "true")
 public class SearchRegisteredBooksController {
 	@Autowired
 	SearchRegisteredBooksService searchRegisteredBooksService;

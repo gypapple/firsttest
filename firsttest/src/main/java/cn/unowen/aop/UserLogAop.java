@@ -1,5 +1,6 @@
 package cn.unowen.aop;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.JoinPoint;
@@ -40,7 +41,6 @@ public class UserLogAop {
 				user = (User) argItem;
 				ul.setName(user.getName());
 				ul.setIp(request.getRemoteHost());
-
 				System.out.println(ul);
 				break;
 			}
@@ -50,8 +50,9 @@ public class UserLogAop {
 	@AfterReturning(value = "userLoginAspect()", returning = "object")
 	public void loginAfter(JoinPoint joinPoint, Object object) {
 		ResultBean resultBean = (ResultBean) object;
-		ul.setLoginflag(resultBean.getMsg().equals("登录成功") ? "1" : "-1");
+		boolean flag = resultBean.getMsg().equals("登录成功");
+		ul.setLoginflag(flag ? "1" : "-1");
 		ulMapper.insertSelective(ul);
-
+		
 	}
 }

@@ -1,10 +1,13 @@
 package cn.unowen.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +24,8 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1/user")
-@Api("用户类信息查询")
+@Api(tags = "用户类信息查询")
+@CrossOrigin(allowCredentials = "true")
 public class UserController {
 	@Autowired
 	UserService uservice;
@@ -38,7 +42,8 @@ public class UserController {
 	@ApiOperation(value = "使用用户名密码登录", responseContainer = "ResultBean.class")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "用户名", required = true),
 			@ApiImplicitParam(name = "password", value = "密码", required = true), })
-	public ResultBean login(User user, HttpSession session, HttpServletResponse response) {
+	public ResultBean login(User user, HttpSession session, HttpServletResponse response)
+			throws UnsupportedEncodingException {
 		return uservice.login(user, session, response);
 	}
 
@@ -63,6 +68,7 @@ public class UserController {
 	@ApiOperation(value = "根据旧密码修改新密码", notes = "根据用户名修改，用户名从session获取，无需前端传递", responseContainer = "ResultBean.class")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "oldPassword", value = "旧密码", required = true, paramType = "query"),
 			@ApiImplicitParam(name = "newePassword", value = "新密码", required = true), })
+	@PostMapping("/updatePassword")
 	public ResultBean updatePWD(@Valid PasswordForm pwdForm, HttpSession session) {
 		return uservice.updatePwd(session, pwdForm);
 

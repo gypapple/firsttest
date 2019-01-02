@@ -134,6 +134,11 @@
 		t_user set
 		lockFlag=#{lock} where name = #{name};
 	</update>
+	<update id="setTimesByName" parameterType="java.lang.String">
+		update
+		t_user set
+		times=0 where name = #{name};
+	</update>
 	<update id="errorCount">
 		update
 		t_user set

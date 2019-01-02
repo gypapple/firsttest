@@ -1,5 +1,7 @@
 package cn.unowen.Service;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +13,7 @@ import cn.unowen.vo.ResultBean;
 import cn.unowen.vo.SearchBookDate;
 
 public interface UserService {
-	public ResultBean login(User user, HttpSession session, HttpServletResponse response);
+	public ResultBean login(User user, HttpSession session, HttpServletResponse response) throws UnsupportedEncodingException;
 
 	public PageBean getLogByDate(SearchBookDate searchBookDate);
 	

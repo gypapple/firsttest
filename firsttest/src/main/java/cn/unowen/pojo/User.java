@@ -1,11 +1,12 @@
 package cn.unowen.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class User {
+public class User implements Serializable {
 	private Integer id;
 
 	private String name;
@@ -65,4 +66,11 @@ public class User {
 	public void setLockflag(Integer lockflag) {
 		this.lockflag = lockflag;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", times=" + times + ", lockflag="
+				+ lockflag + ", lockTime=" + lockTime + "]";
+	}
+	
 }

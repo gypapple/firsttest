@@ -21,6 +21,9 @@ public class SystemCon {
 
 	// 密钥
 	public static final String TOKENKEY = "lanyuan_20181716";
+	
+	//cookie秘钥
+	public static final String COOKIETOKENKEY = "CHANGYUAN";
 
 	// 锁定时间
 	public static final int lockHour = 5;

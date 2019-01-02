@@ -23,11 +23,14 @@ public interface UserMapper {
 
 	User selectByName(String name);
 
-	boolean lockOrNo(String name, int lock);
+	boolean lockOrNo(@Param("name") String name, @Param("lock") String lock);
 
 	int errorCount(@Param("name") String name, @Param("flag") int flag);
 
 	int lockNow(String name);
 
-	int updatePasswordByName(String name, String password);
+	int setTimesByName(String name);
+
+	int updatePasswordByName(@Param("name") String name, @Param("password") String password);
+
 }
