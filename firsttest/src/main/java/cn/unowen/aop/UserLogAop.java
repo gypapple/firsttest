@@ -41,7 +41,6 @@ public class UserLogAop {
 				user = (User) argItem;
 				ul.setName(user.getName());
 				ul.setIp(request.getRemoteHost());
-				System.out.println(ul);
 				break;
 			}
 		}

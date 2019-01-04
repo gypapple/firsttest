@@ -22,7 +22,7 @@ public class BookRegController {
 	RegService regService;
 
 	@ApiOperation(value = "图书注册", notes = "通过识别码和图书编号注册,返回一个带有分页信息的列表", responseContainer = "ResultBean.class")
-	@GetMapping("/api/v1/book/reg")
+	@GetMapping("/reg")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "idcode", value = "识别码", required = true, paramType = "query"),
 			@ApiImplicitParam(name = "booknumber", value = "图书编号", required = true, paramType = "query") })
 	public ResultBean registBook(@Valid Book book) {

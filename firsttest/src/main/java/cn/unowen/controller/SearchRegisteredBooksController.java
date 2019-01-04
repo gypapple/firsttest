@@ -33,7 +33,7 @@ public class SearchRegisteredBooksController {
 	@ApiOperation(value = "通过16位图书编号查询", responseContainer = "ResultBean.class")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "bookNumber", value = "图书编号", required = true, paramType = "query") })
 	@PostMapping("/searchRegBook/byNum")
-	public ResultBean regedBookByNum(String bookNumber) {
+	public PageBean regedBookByNum(String bookNumber) {
 		return searchRegisteredBooksService.selectByBookNumber(bookNumber);
 	}
 	// 2.2-1查询注册图书明细：注册开始时间、注册结束时间

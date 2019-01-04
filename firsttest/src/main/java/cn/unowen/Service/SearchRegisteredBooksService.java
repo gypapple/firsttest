@@ -5,7 +5,7 @@ import cn.unowen.vo.ResultBean;
 import cn.unowen.vo.SearchBookDate;
 
 public interface SearchRegisteredBooksService {
-	ResultBean selectByBookNumber(String bookNumber);
+	PageBean selectByBookNumber(String bookNumber);
 
 	PageBean selectByDate(SearchBookDate searchBookDate);
 

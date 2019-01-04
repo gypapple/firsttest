@@ -1,5 +1,6 @@
 package cn.unowen.Service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,11 @@ public class SearchRegisteredBooksServiceImpl implements SearchRegisteredBooksSe
 	BookLogMapper blMapper;
 
 	@Override
-	public ResultBean selectByBookNumber(String bookNumber) {
-		return ResultBeanUtils.setOK("查询成功", bkmapper.selectBybookNumber(bookNumber));
+	public PageBean selectByBookNumber(String bookNumber) {
+		List<Object> books = new ArrayList<>();
+		books.add(bkmapper.selectBybookNumber(bookNumber));
+		return ResultBeanUtils.setPageOK(1, 1, 1, books);
+		//return ResultBeanUtils.setOK("查询成功", bkmapper.selectBybookNumber(bookNumber));
 	}
 
 	@Override
